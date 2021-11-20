@@ -30,7 +30,7 @@ namespace MoviesTool.Common.Services
         public async Task<SearchResults<Movie>> GetAllPopularAsync(int page)
         {
             string req = httpClient.BaseAddress + "popular?api_key=" + ApiKey + "&language=en-US&page=" + page;
-            var httpResponse = await httpClient.GetAsync(httpClient.BaseAddress + "popular?api_key=" + ApiKey + "&language=en-US&page=" + page);
+            var httpResponse = await httpClient.GetAsync(req);
             var content = await httpResponse.Content.ReadAsStringAsync();
             var srcResults = JsonConvert.DeserializeObject<SearchResults<Movie>>(content);
 
@@ -45,6 +45,16 @@ namespace MoviesTool.Common.Services
             var movie = JsonConvert.DeserializeObject<Movie>(content);
 
             return movie;
+        }
+
+        public async Task<SearchResults<Movie>> GetRatedMoviesAsync(int page)
+        {
+            string req = httpClient.BaseAddress + "top_rated?api_key=" + ApiKey + "&language=en-US&page=" + page;
+            var httpResponse = await httpClient.GetAsync(req);
+            var content = await httpResponse.Content.ReadAsStringAsync();
+            var srcResults = JsonConvert.DeserializeObject<SearchResults<Movie>>(content);
+
+            return srcResults;
         }
     }
 }

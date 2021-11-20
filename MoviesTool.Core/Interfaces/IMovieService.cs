@@ -14,5 +14,7 @@ namespace MoviesTool.Core.Interfaces
         Task<SearchResults<Movie>> GetAllPopularAsync(int page);
 
         Task<Movie> GetMovieByIdAsync(int id);
+
+        Task<SearchResults<Movie>> GetRatedMoviesAsync(int page);
     }
 }
