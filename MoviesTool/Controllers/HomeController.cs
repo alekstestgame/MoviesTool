@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using MoviesTool.Core.Interfaces;
 using MoviesTool.Models;
+using MoviesTool.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -21,16 +22,28 @@ namespace MoviesTool.Controllers
             this.movieService = movieService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var res = movieService.GetAllPopularAsync(1);
+            var popMovies = await movieService.GetAllPopularAsync(1);
 
-            return View();
+            var dto = new MoviesSrcResults
+            {
+                Page = popMovies.Page,
+                Movies = popMovies.Results.Select(x => new MovieViewModel() { Title = x.OriginalTitle, Description = x.Overview, Poster = x.PosterPath }).ToList(),
+                TotalPages = popMovies.TotalPages,
+                TotalResults = popMovies.TotalResults
+            };
+
+            return View(dto);
         }
 
-        public IActionResult Privacy()
+
+        public async Task<IActionResult> ShowMovieDetails(int id)
         {
-            return View();
+            var movie = await movieService.GetMovieByIdAsync(id);
+
+
+            return null;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

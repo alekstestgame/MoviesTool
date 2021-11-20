@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoviesTool.Core.Objects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace MoviesTool.Core.Interfaces
     {
         Task GetAllAsync();
 
-        Task GetAllPopularAsync(int page);
+        Task<SearchResults<Movie>> GetAllPopularAsync(int page);
+
+        Task<Movie> GetMovieByIdAsync(int id);
     }
 }
