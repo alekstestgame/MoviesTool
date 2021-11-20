@@ -24,11 +24,11 @@
                         <div class="bg-white rounded shadow-sm">
                             <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/@item.Poster" alt="@Html.DisplayFor(model => item.Title)" class="img-fluid card-img-top">
                             <div class="p-4">
-                                <h6> <a href="#" class="text-dark">@Html.ActionLink(item.Title, "ShowMovieDetails", "Home", null)</a></h6>
-                                <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <h6> <a href="#" class="text-dark">@Html.ActionLink(item.Title, "MovieDetails", "Home", new { id = item.Id}, null)</a></h6>
+                                <p class="small text-muted mb-0">@Html.Raw(item.Description.Substring(0, 90)) ...</p>
                                 <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPG</span></p>
-                                    <div class="badge badge-danger px-3 rounded-pill font-weight-normal">New</div>
+                                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">Add to</span></p>
+                                    <div class="badge badge-danger px-3 rounded-pill font-weight-normal">Favorite</div>
                                 </div>
                             </div>
                         </div>
@@ -45,9 +45,35 @@
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
+
+                @{
+                    int firstPages = 0;
+                    int lastPages = Model.TotalPages - 3;
+                    bool showGap = false;
+                    if (Model.TotalPages > 20)
+                    {
+                        firstPages = 5;
+                        showGap = true;
+                    }
+                }
+
+                @for (int i = 1; i <= firstPages; i++)
+                {
+                    if (Model.Page == i)
+                    {
+                        <li class="page-item active"><a class="page-link" href="Home/Index/@i">@i</a></li>
+                    }
+                    else
+                    {
+                        <li class="page-item"><a class="page-link" href="/Home/Index/@i">@i</a></li>
+                    }
+                }
+
+                @if (showGap)
+                {
+                    <li class="page-item"><a class="page-link" href="#">...</a></li>
+                }
+
                 <li class="page-item">
                     <a class="page-link" href="#" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>

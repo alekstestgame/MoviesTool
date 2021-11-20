@@ -24,6 +24,9 @@ namespace MoviesTool.Core.Objects
         [JsonProperty("genres")]
         public List<Genre> Genres { get; set; }
 
+        [JsonProperty("genre_ids")]
+        public List<int> GenreIds { get; set; }
+
         [JsonProperty("id")]
         public int Id { get; set; }
 
@@ -48,19 +51,14 @@ namespace MoviesTool.Core.Objects
         [JsonProperty("title")]
         public string Title { get; set; }
 
+        [JsonProperty("budget")]
+        public long Budget { get; set; }
 
-        //[JsonProperty("budget")]
-        //public long Budget { get; set; }
+        [JsonProperty("runtime")]
+        public int Runtime { get; set; }
 
-        //[JsonProperty("changes")]
-        //public ChangesContainer Changes { get; set; }
-
-        //[JsonProperty("credits")]
-        //public Credits Credits { get; set; }
-
-
-        //[JsonProperty("homepage")]
-        //public string Homepage { get; set; }
+        [JsonProperty("homepage")]
+        public string Homepage { get; set; }
 
     }
 }

@@ -39,8 +39,12 @@ namespace MoviesTool.Common.Services
 
         public async Task<Movie> GetMovieByIdAsync(int id)
         {
+            string req = httpClient.BaseAddress + ""+id+"?api_key=" + ApiKey + "&language=en-US";
+            var httpResponse = await httpClient.GetAsync(req);
+            var content = await httpResponse.Content.ReadAsStringAsync();
+            var movie = JsonConvert.DeserializeObject<Movie>(content);
 
-            return null;
+            return movie;
         }
     }
 }
