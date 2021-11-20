@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31829.152
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesTool.Web", "MoviesTool\MoviesTool.Web.csproj", "{8F5EDFF4-A246-4D74-9B00-24DE9EA40130}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoviesTool.Web", "MoviesTool\MoviesTool.Web.csproj", "{8F5EDFF4-A246-4D74-9B00-24DE9EA40130}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesTool.Core", "MoviesTool.Core\MoviesTool.Core.csproj", "{F863A56C-AEBE-4508-8046-6F2430A44F55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoviesTool.Core", "MoviesTool.Core\MoviesTool.Core.csproj", "{F863A56C-AEBE-4508-8046-6F2430A44F55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesTool.Common", "MoviesTool.Common\MoviesTool.Common.csproj", "{1154FDE5-F169-4E17-85B3-BF8DBD594926}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoviesTool.Common", "MoviesTool.Common\MoviesTool.Common.csproj", "{1154FDE5-F169-4E17-85B3-BF8DBD594926}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesTool.DAL", "MoviesTool.DAL\MoviesTool.DAL.csproj", "{B4376A88-1A5E-4BD3-8C3E-57CC626AE8ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{1154FDE5-F169-4E17-85B3-BF8DBD594926}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1154FDE5-F169-4E17-85B3-BF8DBD594926}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1154FDE5-F169-4E17-85B3-BF8DBD594926}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4376A88-1A5E-4BD3-8C3E-57CC626AE8ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4376A88-1A5E-4BD3-8C3E-57CC626AE8ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4376A88-1A5E-4BD3-8C3E-57CC626AE8ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4376A88-1A5E-4BD3-8C3E-57CC626AE8ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

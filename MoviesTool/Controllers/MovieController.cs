@@ -10,11 +10,13 @@ namespace MoviesTool.Web.Controllers
 {
     public class MovieController : Controller
     {
-        private readonly IMovieService movieService;
+        readonly IMovieService movieService;
+        readonly IDataServices dataServices;
 
-        public MovieController(IMovieService movieService)
+        public MovieController(IMovieService movieService, IDataServices dataServices)
         {
             this.movieService = movieService;
+            this.dataServices = dataServices;
         }
 
 
@@ -34,9 +36,10 @@ namespace MoviesTool.Web.Controllers
             return View(dto);
         }
 
-        public IActionResult MyFavoriteMovies()
+        [HttpGet()]
+        public async Task<IActionResult> MyFavoriteMovies()
         {
-
+            var myFavoriteMvs = await dataServices.GetFavoriteMovies();
 
             return View();
         }

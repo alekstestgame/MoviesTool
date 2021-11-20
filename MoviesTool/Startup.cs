@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MoviesTool.Common.Services;
 using MoviesTool.Core.Interfaces;
+using MoviesTool.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +29,8 @@ namespace MoviesTool
         {
             services.AddControllersWithViews();
             services.AddHttpClient<IMovieService, MovieService>(c=> c.BaseAddress= new Uri("https://api.themoviedb.org/3/movie/"));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AppMovieConnection")));
+            services.AddScoped<IDataServices, DbDataServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
