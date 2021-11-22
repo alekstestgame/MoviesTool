@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MoviesTool.Core.Interfaces;
+using MoviesTool.Core.Objects;
 using MoviesTool.Models;
 using MoviesTool.Web.Models;
 using System;
@@ -15,11 +16,14 @@ namespace MoviesTool.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IMovieService movieService;
+        readonly IDataServices dataServices;
+        SearchResults<Movie> searchResults;
 
-        public HomeController(ILogger<HomeController> logger, IMovieService movieService)
+        public HomeController(ILogger<HomeController> logger, IMovieService movieService, IDataServices dataServices)
         {
             _logger = logger;
             this.movieService = movieService;
+            this.dataServices = dataServices;
         }
 
         [HttpGet()]
@@ -42,14 +46,17 @@ namespace MoviesTool.Controllers
         [Route("Home/Index/{page?}")]
         public async Task<IActionResult> Index(int page=1)
         {
-            var popMovies = await movieService.GetAllPopularAsync(page);
+            //var popMovies = await movieService.GetAllPopularAsync(page);
+            searchResults = await movieService.GetAllPopularAsync(page);
+
+            //int nextPage = popMovies.Page + 1;
 
             var dto = new MoviesSrcResults
             {
-                Page = popMovies.Page,
-                Movies = popMovies.Results.Select(x => new MovieViewModel() { Id = x.Id, Title = x.OriginalTitle, Description = x.Overview, Poster = x.PosterPath }).ToList(),
-                TotalPages = popMovies.TotalPages,
-                TotalResults = popMovies.TotalResults
+                Page = searchResults.Page,
+                Movies = searchResults.Results.Select(x => new MovieViewModel() { Id = x.Id, Title = x.OriginalTitle, Description = x.Overview, Poster = x.PosterPath }).ToList(),
+                TotalPages = searchResults.TotalPages,
+                TotalResults = searchResults.TotalResults
             };
 
             return View(dto);
@@ -75,6 +82,17 @@ namespace MoviesTool.Controllers
 
 
             return View(dto);
+        }
+
+        public async Task<IActionResult> AddToFavorite(MovieViewModel movieModel)
+        {
+            string ff = "";
+
+            var addFav = dataServices.AddFavoriteMovie(new Movie() { Id = movieModel.Id });
+
+
+
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

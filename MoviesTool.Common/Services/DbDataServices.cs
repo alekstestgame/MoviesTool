@@ -15,14 +15,28 @@ namespace MoviesTool.Common.Services
     public class DbDataServices : IDataServices
     {
         ApplicationDbContext dbContext;
-        public DbDataServices(IServiceProvider serviceProvider)
+        IServiceProvider serviceProvider;
+
+        public DbDataServices(IServiceProvider serviceProvider, ApplicationDbContext dbContext)
         {
-            this.dbContext = serviceProvider.GetRequiredService<ApplicationDbContext>();
+            this.dbContext = dbContext;
+            this.serviceProvider = serviceProvider;
+            
         }
 
-        public Task<bool> AddFavoriteMovie(Movie movie)
+        public async Task<bool> AddFavoriteMovie(Movie movie)
         {
-            throw new NotImplementedException();
+            try
+            {
+                dbContext.Add(new FavoriteMovie() { MovieId = movie.Id });
+                var saveResult = await dbContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.Message;
+            }
+
+            return true;
         }
 
         public async Task<List<FavoriteMovie>> GetFavoriteMovies()
@@ -30,9 +44,19 @@ namespace MoviesTool.Common.Services
             return await dbContext.FavoriteMovies.ToListAsync();
         }
 
-        public Task<bool> RemoveFavoriteMovie(Movie movie)
+        public async Task<bool> RemoveFavoriteMovie(Movie movie)
         {
-            throw new NotImplementedException();
+            try
+            {
+                dbContext.Remove(new FavoriteMovie() { MovieId = movie.Id });
+                var saveResult = await dbContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.Message;
+            }
+
+            return true;
         }
     }
 }

@@ -29,7 +29,8 @@ namespace MoviesTool
         {
             services.AddControllersWithViews();
             services.AddHttpClient<IMovieService, MovieService>(c=> c.BaseAddress= new Uri("https://api.themoviedb.org/3/movie/"));
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AppMovieConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AppMovieConnection"), 
+                sqlServerOptionsAction: sqlOptions => {sqlOptions.EnableRetryOnFailure();}));
             services.AddScoped<IDataServices, DbDataServices>();
         }
 

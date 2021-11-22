@@ -15,5 +15,10 @@ namespace MoviesTool.DAL
         }
 
         public DbSet<FavoriteMovie> FavoriteMovies { get; set; }
+
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        //}
     }
 }

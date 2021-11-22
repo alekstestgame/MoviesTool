@@ -9,7 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoviesTool.Core", "MoviesTo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoviesTool.Common", "MoviesTool.Common\MoviesTool.Common.csproj", "{1154FDE5-F169-4E17-85B3-BF8DBD594926}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesTool.DAL", "MoviesTool.DAL\MoviesTool.DAL.csproj", "{B4376A88-1A5E-4BD3-8C3E-57CC626AE8ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoviesTool.DAL", "MoviesTool.DAL\MoviesTool.DAL.csproj", "{B4376A88-1A5E-4BD3-8C3E-57CC626AE8ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{44E2B3AA-EDCE-4CE1-B415-26ED04E76E67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesTool.FunctionalTests", "MoviesTool.FunctionalTests\MoviesTool.FunctionalTests.csproj", "{3FCBF219-35F4-4502-AB07-8C8F21CF4089}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesTool.IntegrationTests", "MoviesTool.IntegrationTests\MoviesTool.IntegrationTests.csproj", "{E81091BB-404E-4274-A91E-527EC09D2F7F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +39,21 @@ Global
 		{B4376A88-1A5E-4BD3-8C3E-57CC626AE8ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4376A88-1A5E-4BD3-8C3E-57CC626AE8ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4376A88-1A5E-4BD3-8C3E-57CC626AE8ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FCBF219-35F4-4502-AB07-8C8F21CF4089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FCBF219-35F4-4502-AB07-8C8F21CF4089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FCBF219-35F4-4502-AB07-8C8F21CF4089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FCBF219-35F4-4502-AB07-8C8F21CF4089}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E81091BB-404E-4274-A91E-527EC09D2F7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E81091BB-404E-4274-A91E-527EC09D2F7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E81091BB-404E-4274-A91E-527EC09D2F7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E81091BB-404E-4274-A91E-527EC09D2F7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3FCBF219-35F4-4502-AB07-8C8F21CF4089} = {44E2B3AA-EDCE-4CE1-B415-26ED04E76E67}
+		{E81091BB-404E-4274-A91E-527EC09D2F7F} = {44E2B3AA-EDCE-4CE1-B415-26ED04E76E67}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {22570E48-2A63-44AE-A394-347EF3AFCBBA}
